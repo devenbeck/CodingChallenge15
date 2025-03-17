@@ -42,3 +42,22 @@ document.addEventListener('DOMContentLoaded', function (){
     addRiskItem("Data Breach", "High", "IT");
     addRiskItem("Supply Chain Disruption", "Medium", "Operations");
 })
+//Task 4
+ if (riskLevel.toLowerCase() === "low") {
+    riskCard.classList.add("low"); 
+} else if (riskLevel.toLowerCase() === "medium") {
+    riskCard.classList.add("medium");
+} else if (riskLevel.toLowerCase() === "high") {
+    riskCard.classList.add("high"); 
+}
+document.getElementById('increaseRiskBtn').addEventListener('click', () => {
+    const allRiskCards = document.querySelectorAll('.risk-card');
+    const arrRiskCards = Array.from(allRiskCards);
+    arrRiskCards.forEach((card ) => {
+        const cardRiskLevel = card.querySelector('.risk-level');
+        const cardRiskLevelValue = cardRiskLevel.textContent.replace('Risk Level: ','');
+        
+        if(cardRiskLevelValue.toLowerCase() == 'low'){
+            cardRiskLevel.textContent = 'Risk Level: Medium';
+            styleSingleCard(card);
+        }
